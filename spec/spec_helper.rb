@@ -1,4 +1,3 @@
-require "bundler/setup"
 unless ENV['SKIP_COVERAGE'] == 'true'
   require 'simplecov'
   require 'coveralls'
@@ -11,11 +10,12 @@ unless ENV['SKIP_COVERAGE'] == 'true'
   )
 
   SimpleCov.start do
-    add_filter 'spec'
-    add_group 'TestRunner', 'lib/koine/test_runner'
+    add_filter '/spec/'
+    # add_group 'TestRunner', 'lib/koine/test_runner'
   end
 end
 
+require "bundler/setup"
 require "koine/test_runner"
 
 RSpec.configure do |config|
