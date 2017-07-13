@@ -6,7 +6,7 @@ module Koine
       end
 
       def build
-        TestRunner.new
+        TestRunner.new(Adapters.new)
       end
     end
   end
