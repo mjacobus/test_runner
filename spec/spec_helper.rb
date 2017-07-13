@@ -12,6 +12,7 @@ unless ENV['SKIP_COVERAGE'] == 'true'
 
   SimpleCov.start do
     add_filter 'spec'
+    add_group 'TestRunner', 'lib/koine/test_runner'
   end
 end
 

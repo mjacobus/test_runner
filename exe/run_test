@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'koine/test_runner'
+require 'yaml'
+
+expected_file = "#{Dir.pwd}/.test_runner.yml"
+config = YAML.load_file(expected_file)
+
+args = Koine::TestRunner::Arguments.new(ARGV)
+runner = Koine::TestRunner::Builder.new.from_config(config)
+runner.run(args.to_h)
