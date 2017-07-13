@@ -13,13 +13,17 @@ module Koine
       end
 
       def line?
-        @options.key?(:line)
+        @options[:line].to_s.strip != ''
       end
 
       def config_file
         return @options[:config_file] if @options[:config_file]
         return '.test_runner.yml' if File.exist?('.test_runner.yml')
         File.expand_path('../../../../config/default.yml', __FILE__)
+      end
+
+      def run_options
+        { file_path: file_path, line: line }
       end
 
       private
@@ -36,8 +40,10 @@ module Koine
           arg.split('--').last.split('=')
         end
 
-        data.each do |value|
-          @options[normalize_key(value.first)] = value.last
+        data.each do |values|
+          key = values.first
+          value = values.length == 2 ? values.last : nil
+          @options[normalize_key(key)] = value
         end
       end
 

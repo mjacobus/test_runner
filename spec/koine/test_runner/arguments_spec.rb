@@ -21,7 +21,9 @@ RSpec.describe Koine::TestRunner::Arguments do
     end
 
     it 'sets file_path' do
-      expect(create(file).file_path).to eq(file)
+      subject = create(file)
+
+      expect(subject.file_path).to eq(file)
     end
   end
 
@@ -31,7 +33,15 @@ RSpec.describe Koine::TestRunner::Arguments do
     end
 
     it 'can be set to a number' do
-      expect(create(file, '--line=10').line).to eq(10)
+      subject = create(file, '--line=10')
+
+      expect(subject.line).to eq(10)
+    end
+
+    it 'can be set to a number' do
+      subject = create(file, '--line=')
+
+      expect(subject.line).to be_nil
     end
   end
 
@@ -56,6 +66,16 @@ RSpec.describe Koine::TestRunner::Arguments do
       arguments = create(file, '--config-file=/var/config/config.yml')
 
       expect(arguments.config_file).to eq('/var/config/config.yml')
+    end
+  end
+
+  describe '#run_options' do
+    it 'returns file and line' do
+      subject = create(file, '--line=10').run_options
+      expect(subject).to eq(file_path: file, line: 10)
+
+      subject = create(file, '--line=').run_options
+      expect(subject).to eq(file_path: file, line: nil)
     end
   end
 
