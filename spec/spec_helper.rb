@@ -17,6 +17,7 @@ end
 
 require "bundler/setup"
 require "koine/test_runner"
+require "object_comparator/rspec"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
