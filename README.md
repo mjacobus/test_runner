@@ -79,12 +79,15 @@ module My
       file_path.end_with?(@suffix)
     end
 
-    def test_command_for_file(file_path: line: nil)
-      cmd = ["/usr/bin/my_test --file=#{file_path}"]
+    def test_command(file_path: line: nil, all_tests: false)
+      cmd = ["/usr/bin/my_test]
 
-      if line
-        cmd << "--line=#{line}"
+      if all_tests
+        return cmd.join(' ')
       end
+
+      cmd <<  "--file=#{file_path}""
+      cmd << "--line=#{line}" if line
 
       cmd.join(' ')
     end
