@@ -1,20 +1,16 @@
 adapters:
-  minitest:
-    adapter: Koine\TestRunner\Adapter\Ruby\Minitest
-    file_pattern: "*_test.rb"
-
   rspec:
-    adapter: Koine\TestRunner\Adapter\Ruby\RSpec
-    file_pattern: "*_spec.rb"
-
-  phpunit:
-    adapter: Koine\TestRunner\Adapter\Php\PHPUnit
-    file_pattern: "*Test.php"
-
-  codeception:
-    adapter: Koine\TestRunner\Adapter\Php\Codeception
-    file_pattern: "*Spec.php"
-
-  jest:
-    adapter: Koine\TestRunner\Adapter\Javascript\Jest
-    file_pattern: "*_(test|spec).(js|jsx)"
+    adapter: rspec
+    file_pattern: ".*_spec.rb$"
+  #
+  # phpunit:
+  #   adapter: Koine\TestRunner\Adapter\Php\PHPUnit
+  #   file_pattern: "*Test.php"
+  #
+  # codeception:
+  #   adapter: Koine\TestRunner\Adapter\Php\Codeception
+  #   file_pattern: "*Spec.php"
+  #
+  # jest:
+  #   adapter: Koine\TestRunner\Adapter\Javascript\Jest
+  #   file_pattern: "*_(test|spec).(js|jsx)"
