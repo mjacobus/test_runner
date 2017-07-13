@@ -5,6 +5,7 @@ module Koine
       end
 
       def build
+        TestRunner.new
       end
     end
   end
