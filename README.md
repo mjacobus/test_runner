@@ -1,13 +1,22 @@
 # TestRunner
 
-Easy test runner costumization
+Easy test runner customization
+
+[![Build Status](https://travis-ci.org/mjacobus/test_runner.svg?branch=master)](https://travis-ci.org/mjacobus/koine-test_runner)
+[![Coverage Status](https://coveralls.io/repos/github/mjacobus/test_runner/badge.svg?branch=master)](https://coveralls.io/github/mjacobus/test_runner?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mjacobus/test_runner/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mjacobus/test_runner/?branch=master)
+[![Code Climate](https://codeclimate.com/github/mjacobus/test_runner/badges/gpa.svg)](https://codeclimate.com/github/mjacobus/test_runner)
+[![Issue Count](https://codeclimate.com/github/mjacobus/test_runner/badges/issue_count.svg)](https://codeclimate.com/github/mjacobus/test_runner)
+
+[![Gem Version](https://badge.fury.io/rb/koine-test_runner.svg)](https://badge.fury.io/rb/koine-test_runner)
+[![Dependency Status](https://gemnasium.com/badges/github.com/mjacobus/test_runner.svg)](https://gemnasium.com/github.com/mjacobus/test_runner)
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'test_runner'
+gem 'koine-test_runner'
 ```
 
 And then execute:
