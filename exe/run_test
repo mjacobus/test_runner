@@ -5,7 +5,6 @@ require 'koine/test_runner'
 require 'yaml'
 
 expected_file = "#{Dir.pwd}/.test_runner.yml"
-config = YAML.load_file(expected_file)
 
 arguments = Koine::TestRunner::Arguments.new(ARGV)
 runner = Koine::TestRunner::Builder.new(arguments).build
