@@ -5,6 +5,7 @@ require "koine/test_runner/builder"
 module Koine
   class TestRunner
     def run(file_path:, line: nil)
+      p file_path
     end
   end
 end
