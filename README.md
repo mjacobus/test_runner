@@ -75,7 +75,7 @@ module My
       @suffix = suffix
     end
 
-    def matches?(file_path)
+    def accept?(file_path:)
       file_path.end_with?(@suffix)
     end
 
