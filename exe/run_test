@@ -7,6 +7,6 @@ require 'yaml'
 expected_file = "#{Dir.pwd}/.test_runner.yml"
 config = YAML.load_file(expected_file)
 
-args = Koine::TestRunner::Arguments.new(ARGV)
-runner = Koine::TestRunner::Builder.new.from_config(config)
-runner.run(args.to_h)
+arguments = Koine::TestRunner::Arguments.new(ARGV)
+runner = Koine::TestRunner::Builder.new(arguments).build
+runner.run(arguments.run_options)

@@ -2,7 +2,6 @@ module Koine
   class TestRunner
     class Arguments
       attr_reader :file_path
-      attr_reader :line
 
       def initialize(attributes = [])
         initialize_attributes(attributes.dup)
