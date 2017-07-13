@@ -45,23 +45,23 @@ bundle exec run_test some/file_spec.custom
 
 adapters:
   minitest:
-    adapter: TestRunner\Adapter\Ruby\Minitest
+    adapter: Koine\TestRunner\Adapter\Ruby\Minitest
     file_pattern: "*_test.rb"
 
   rspec:
-    adapter: TestRunner\Adapter\Ruby\RSpec
+    adapter: Koine\TestRunner\Adapter\Ruby\RSpec
     file_pattern: "*_spec.rb"
 
   phpunit:
-    adapter: TestRunner\Adapter\Php\PHPUnit
+    adapter: Koine\TestRunner\Adapter\Php\PHPUnit
     file_pattern: "*Test.php"
 
   codeception:
-    adapter: TestRunner\Adapter\Php\Codeception
+    adapter: Koine\TestRunner\Adapter\Php\Codeception
     file_pattern: "*Spec.php"
 
   jest:
-    adapter: TestRunner\Adapter\Javascript\Jest
+    adapter: Koine\TestRunner\Adapter\Javascript\Jest
     file_pattern: "*_(test|spec).(js|jsx)"
 
   My::CustoAdapter:

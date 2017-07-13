@@ -1,6 +1,4 @@
 require "bundler/setup"
-require "test_runner"
-
 unless ENV['SKIP_COVERAGE'] == 'true'
   require 'simplecov'
   require 'coveralls'
@@ -16,6 +14,8 @@ unless ENV['SKIP_COVERAGE'] == 'true'
     add_filter 'spec'
   end
 end
+
+require "koine/test_runner"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
