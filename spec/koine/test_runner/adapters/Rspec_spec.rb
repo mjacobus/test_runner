@@ -15,7 +15,7 @@ RSpec.describe Koine::TestRunner::Adapters::Rspec do
     [
       'foo/bar/baz_spec.rb',
       'foo/foo_spec.rb',
-      'foo_spec.rb',
+      'foo_spec.rb'
     ].each do |file|
       it "accept #{file}" do
         expect(subject.accept?(file_path: file)).to be true
@@ -25,7 +25,7 @@ RSpec.describe Koine::TestRunner::Adapters::Rspec do
     [
       'foo/bar/spec_helper.rb',
       'foo/spec.rb',
-      'spec.rb',
+      'spec.rb'
     ].each do |file|
       it "rejects #{file}" do
         expect(subject.accept?(file_path: file)).to be false

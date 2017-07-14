@@ -11,7 +11,7 @@ RSpec.describe Koine::TestRunner::Builder do
     it 'builds the runner based on the config file' do
       adapters = [
         Koine::TestRunner::Adapters::Rspec.new(
-          file_pattern: ".*_spec.rb$"
+          file_pattern: '.*_spec.rb$'
         )
       ]
 

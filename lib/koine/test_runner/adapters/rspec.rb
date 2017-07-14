@@ -10,18 +10,13 @@ module Koine
           !@file_pattern.match(file_path).nil?
         end
 
-        def test_command(file_path:, line: nil, all_tests: false)
+        def test_command(file_path:, line: nil, all_tests: false); end
 
-        end
+        def command_for_file_test(file_path:, line:); end
 
-        def command_for_file_test(file_path:, line:)
-        end
+        def command_for_single_test(file_path:, line:); end
 
-        def command_for_single_test(file_path:, line:)
-        end
-
-        def command_for_all_tests(file_path:)
-        end
+        def command_for_all_tests(file_path:); end
       end
     end
   end
