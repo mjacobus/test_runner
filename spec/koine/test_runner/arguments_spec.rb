@@ -5,7 +5,7 @@ RSpec.describe Koine::TestRunner::Arguments do
     'spec/koine/test_runner/arguments_spec.rb'
   end
 
-  let(:arguments) { create(file) }
+  subject { create(file) }
 
   describe '#initialize' do
     it 'throws when no file_path was given' do
@@ -38,7 +38,7 @@ RSpec.describe Koine::TestRunner::Arguments do
       expect(subject.line).to eq(10)
     end
 
-    it 'can be set to a number' do
+    it 'when no number is given it is nil' do
       subject = create(file, '--line=')
 
       expect(subject.line).to be_nil
@@ -53,29 +53,31 @@ RSpec.describe Koine::TestRunner::Arguments do
     it 'defaults to config/default.yml' do
       config = File.expand_path('../../../../config/default.yml', __FILE__)
 
-      expect(arguments.config_file).to eq(config)
+      expect(subject.config_file).to eq(config)
     end
 
     it 'returns .test_runner.yml when this file exists' do
       allow(File).to receive(:exist?).with('.test_runner.yml') { true }
 
-      expect(arguments.config_file).to eq('.test_runner.yml')
+      expect(subject.config_file).to eq('.test_runner.yml')
     end
 
     it 'return custom file when given' do
-      arguments = create(file, '--config-file=/var/config/config.yml')
+      subject = create(file, '--config-file=/var/config/config.yml')
 
-      expect(arguments.config_file).to eq('/var/config/config.yml')
+      expect(subject.config_file).to eq('/var/config/config.yml')
     end
   end
 
-  describe '#run_options' do
-    it 'returns file and line' do
-      subject = create(file, '--line=10').run_options
-      expect(subject).to eq(file_path: file, line: 10)
+  describe '#all_tests?' do
+    it 'is initially false' do
+      expect(subject.all?).to be false
+    end
 
-      subject = create(file, '--line=').run_options
-      expect(subject).to eq(file_path: file, line: nil)
+    it 'is initially false' do
+      subject = create(file, '--all')
+
+      expect(subject.all?).to be true
     end
   end
 

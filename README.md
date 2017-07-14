@@ -75,19 +75,19 @@ module My
       @suffix = suffix
     end
 
-    def accept?(file_path:)
-      file_path.end_with?(@suffix)
+    def accept?(config)
+      config.file_path.end_with?(@suffix)
     end
 
-    def test_command(file_path: line: nil, all_tests: false)
+    def test_command(config)
       cmd = ["/usr/bin/my_test]
 
-      if all_tests
+      if config.all?
         return cmd.join(' ')
       end
 
-      cmd <<  "--file=#{file_path}""
-      cmd << "--line=#{line}" if line
+      cmd <<  "--file=#{config.file_path}""
+      cmd << "--line=#{config.line}" if config.line
 
       cmd.join(' ')
     end

@@ -13,7 +13,11 @@ module Koine
       end
 
       def line?
-        @options[:line].to_s.strip != ''
+        @options[:line].to_s.tr('true', '').strip != ''
+      end
+
+      def all?
+        @options[:all]
       end
 
       def config_file
@@ -29,20 +33,20 @@ module Koine
       private
 
       def initialize_attributes(arguments)
-        @file_path = arguments.reject { |arg| arg =~ /=/ }.shift
+        @file_path = arguments.reject { |arg| arg =~ /^--/ }.shift
         raise ArgumentError, 'file name was not given' unless @file_path
       end
 
       def initialize_options(data)
-        @options = {}
+        @options = { all: false }
 
-        data = data.select { |arg| arg =~ /^--([a-z-]+)=/ }.map do |arg|
+        data = data.select { |arg| arg =~ /^--([a-z-]+)/ }.map do |arg|
           arg.split('--').last.split('=')
         end
 
         data.each do |values|
           key = values.first
-          value = values.length == 2 ? values.last : nil
+          value = values.length == 2 ? values.last : true
           @options[normalize_key(key)] = value
         end
       end
