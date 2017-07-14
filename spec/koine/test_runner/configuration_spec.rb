@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Koine::TestRunner::Arguments do
+RSpec.describe Koine::TestRunner::Configuration do
   let(:file) do
     'spec/koine/test_runner/arguments_spec.rb'
   end

@@ -1,6 +1,6 @@
 module Koine
   class TestRunner
-    class Arguments
+    class Configuration
       attr_reader :file_path
 
       def initialize(attributes = [])

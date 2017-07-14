@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Builder do
   describe '#build' do
-    let(:config) { Koine::TestRunner::Arguments.new(['file']) }
+    let(:config) { Koine::TestRunner::Configuration.new(['file']) }
 
     let(:runner) do
       described_class.new(config).build

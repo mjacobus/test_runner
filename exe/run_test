@@ -4,6 +4,6 @@ require 'bundler/setup'
 require 'koine/test_runner'
 require 'yaml'
 
-arguments = Koine::TestRunner::Arguments.new(ARGV)
-runner = Koine::TestRunner::Builder.new(arguments).build
-runner.run(arguments.run_options)
+configuration = Koine::TestRunner::Configuration.new(ARGV)
+runner = Koine::TestRunner::Builder.new(configuration).build
+runner.run(configuration)
