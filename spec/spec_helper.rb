@@ -1,4 +1,6 @@
-unless ENV['SKIP_COVERAGE'] == 'true'
+if ENV['SKIP_COVERAGE'] == 'true'
+  puts "Skipping coverage"
+else
   require 'simplecov'
   require 'coveralls'
 
@@ -10,8 +12,7 @@ unless ENV['SKIP_COVERAGE'] == 'true'
   )
 
   SimpleCov.start do
-    add_filter '/spec/'
-    # add_group 'TestRunner', 'lib/koine/test_runner'
+    add_filter './spec/'
   end
 end
 
