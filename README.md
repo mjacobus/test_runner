@@ -33,7 +33,7 @@ bundle exec run_test some/file_spec.rb --line=55
 bundle exec run_test some/file.php
 
 # unknown file
-bundle exec run_test some/file_spec.custom 
+bundle exec run_test some/file_spec.custom
 # => error: No test runner found for file 'some/file_spec.custom'
 ```
 

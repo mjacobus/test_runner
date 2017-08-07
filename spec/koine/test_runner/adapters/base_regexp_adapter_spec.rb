@@ -1,8 +1,15 @@
 require 'spec_helper'
 
-RSpec.describe Koine::TestRunner::Adapters::Rspec do
+RSpec.describe Koine::TestRunner::Adapters::BaseRegexpAdapter do
   let(:klass) { described_class }
-  subject { klass.new }
+  subject { klass.new(file_pattern: /.*_spec.rb$/) }
+
+  it 'takes string file pattern or Regexp' do
+    regexp = klass.new(file_pattern: /.*_spec.rb$/)
+    string = klass.new(file_pattern: '.*_spec.rb$')
+
+    expect(regexp).to be_equal_to(string)
+  end
 
   describe '#accept?' do
     [
@@ -24,22 +31,6 @@ RSpec.describe Koine::TestRunner::Adapters::Rspec do
       it "rejects #{file}" do
         config = Koine::TestRunner::Configuration.new([file])
         expect(subject.accept?(config)).to be false
-      end
-    end
-  end
-
-  describe '#script_for' do
-    it 'defaults to bundle exec rspec' do
-      allow(File).to receive(:exist?).with('bin/rspec').and_return(false)
-
-      expect(subject.send(:script_for, double(:config))).to eq('bundle exec rspec')
-    end
-
-    context 'when ./bin/rspec exists' do
-      it 'returns ./bin/rspec' do
-        allow(File).to receive(:exist?).with('bin/rspec').and_return(true)
-
-        expect(subject.send(:script_for, double(:config))).to eq('./bin/rspec')
       end
     end
   end

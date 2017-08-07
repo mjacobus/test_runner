@@ -7,6 +7,7 @@ require 'koine/test_runner/adapters'
 module Koine
   class TestRunner
     class Adapters
+      autoload :BaseRegexpAdapter, 'koine/test_runner/adapters/base_regexp_adapter'
       autoload :Rspec, 'koine/test_runner/adapters/rspec'
     end
 
