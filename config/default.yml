@@ -2,10 +2,10 @@ adapters:
   rspec:
     adapter: rspec
     file_pattern: ".*_spec.rb$"
-  #
-  # phpunit:
-  #   adapter: Koine\TestRunner\Adapter\Php\PHPUnit
-  #   file_pattern: "*Test.php"
+
+  phpunit:
+    adapter: phpunit
+    file_pattern: ".*Test.php$"
   #
   # codeception:
   #   adapter: Koine\TestRunner\Adapter\Php\Codeception

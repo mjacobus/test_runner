@@ -18,15 +18,19 @@ module Koine
 
         private
 
-        def all_tests(_config)
-          raise 'Not implemented'
+        def all_tests(config)
+          script_for(config)
         end
 
-        def file_line_command(_config)
-          raise 'Not implemented'
+        def file_line_command(config)
+          [single_file_command(config), config.line].join(':')
         end
 
-        def single_file_command(_config)
+        def single_file_command(config)
+          [script_for(config), config.file_path].join(' ')
+        end
+
+        def script_for(_config)
           raise 'Not implemented'
         end
       end

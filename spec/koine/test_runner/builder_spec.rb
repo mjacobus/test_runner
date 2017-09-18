@@ -12,6 +12,9 @@ RSpec.describe Koine::TestRunner::Builder do
       adapters = [
         Koine::TestRunner::Adapters::Rspec.new(
           file_pattern: '.*_spec.rb$'
+        ),
+        Koine::TestRunner::Adapters::Phpunit.new(
+          file_pattern: '.*Test.php$'
         )
       ]
 
