@@ -43,4 +43,30 @@ RSpec.describe Koine::TestRunner::Adapters::Rspec do
       end
     end
   end
+
+  describe '#test_command' do
+    before do
+      allow(File).to receive(:exist?).with('bin/rspec').and_return(false)
+    end
+
+    let(:file) { 'foo/bar_spec.rb' }
+
+    it 'returns the correct test command for all files' do
+      configuration = Koine::TestRunner::Configuration.new([file, '--all'])
+
+      expect(subject.test_command(configuration)).to eq('bundle exec rspec')
+    end
+
+    it 'returns the correct test command for single file with line' do
+      configuration = Koine::TestRunner::Configuration.new([file, '--line=5'])
+
+      expect(subject.test_command(configuration)).to eq("bundle exec rspec #{file}:5")
+    end
+
+    it 'returns the correct test command for intire single file' do
+      configuration = Koine::TestRunner::Configuration.new([file])
+
+      expect(subject.test_command(configuration)).to eq("bundle exec rspec #{file}")
+    end
+  end
 end

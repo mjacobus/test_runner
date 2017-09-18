@@ -11,6 +11,22 @@ module Koine
         end
 
         def test_command(config)
+          return all_tests(config) if config.all?
+          return file_line_command(config) if config.line?
+          single_file_command(config)
+        end
+
+        private
+
+        def all_tests(_config)
+          raise 'Not implemented'
+        end
+
+        def file_line_command(_config)
+          raise 'Not implemented'
+        end
+
+        def single_file_command(_config)
           raise 'Not implemented'
         end
       end
