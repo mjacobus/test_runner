@@ -2,7 +2,17 @@ require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters::BaseRegexpAdapter do
   let(:klass) { described_class }
+  let(:next_adapter) { double }
   subject { klass.new(file_pattern: /.*_spec.rb$/) }
+
+  before do
+    allow(next_adapter).to receive(:test_command).and_return('next-command')
+    subject.next_adapter = next_adapter
+  end
+
+  it 'is a BaseAdapter' do
+    expect(subject).to be_a(Koine::TestRunner::Adapters::BaseAdapter)
+  end
 
   it 'takes string file pattern or Regexp' do
     regexp = klass.new(file_pattern: /.*_spec.rb$/)
@@ -19,7 +29,7 @@ RSpec.describe Koine::TestRunner::Adapters::BaseRegexpAdapter do
     ].each do |file|
       it "accept #{file}" do
         config = Koine::TestRunner::Configuration.new([file])
-        expect(subject.accept?(config)).to be true
+        expect(subject.send(:accept?, config)).to be true
       end
     end
 
@@ -30,7 +40,7 @@ RSpec.describe Koine::TestRunner::Adapters::BaseRegexpAdapter do
     ].each do |file|
       it "rejects #{file}" do
         config = Koine::TestRunner::Configuration.new([file])
-        expect(subject.accept?(config)).to be false
+        expect(subject.send(:accept?, config)).to be false
       end
     end
   end

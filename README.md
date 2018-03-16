@@ -75,21 +75,11 @@ module My
       @suffix = suffix
     end
 
-    def accept?(config)
-      config.file_path.end_with?(@suffix)
-    end
-
+    # return nil if you do not want to deal with it
     def test_command(config)
-      cmd = ["/usr/bin/my_test]
-
-      if config.all?
-        return cmd.join(' ')
+      if config.file_path.end_with?(@suffix)
+        return "./bin/test #{config.file_path}"
       end
-
-      cmd <<  "--file=#{config.file_path}""
-      cmd << "--line=#{config.line}" if config.line
-
-      cmd.join(' ')
     end
   end
 end
@@ -99,6 +89,20 @@ Now you can run:
 
 ```bash
 bundle exec run_test some/file_spec.custom
+```
+
+## Running the last test
+
+Either run a file that does not get caught by any adapter
+
+```bash
+bundle exec run_test some/file_spec.unkown # run last test
+```
+
+Or
+
+```bash
+bundle exec run_test --last
 ```
 
 ## Development

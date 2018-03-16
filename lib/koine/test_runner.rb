@@ -3,6 +3,9 @@ require 'koine/test_runner/command_executer'
 require 'koine/test_runner/configuration'
 require 'koine/test_runner/builder'
 require 'koine/test_runner/adapters'
+require 'koine/test_runner/adapters/base_adapter'
+require 'koine/test_runner/adapters/null_adapter'
+require 'koine/test_runner/adapters/last_command_adapter'
 
 module Koine
   class TestRunner

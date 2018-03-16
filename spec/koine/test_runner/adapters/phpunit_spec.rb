@@ -12,7 +12,7 @@ RSpec.describe Koine::TestRunner::Adapters::Phpunit do
     ].each do |file|
       it "accept #{file}" do
         config = Koine::TestRunner::Configuration.new([file])
-        expect(subject.accept?(config)).to be true
+        expect(subject.send(:accept?, config)).to be true
       end
     end
 
@@ -22,7 +22,7 @@ RSpec.describe Koine::TestRunner::Adapters::Phpunit do
     ].each do |file|
       it "rejects #{file}" do
         config = Koine::TestRunner::Configuration.new([file])
-        expect(subject.accept?(config)).to be false
+        expect(subject.send(:accept?, config)).to be false
       end
     end
   end
