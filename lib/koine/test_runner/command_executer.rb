@@ -1,11 +1,9 @@
-require 'english'
-
 module Koine
   class TestRunner
     class CommandExecuter
       def execute(command)
         system(command.to_s)
-        $CHILD_STATUS.exitstatus
+        $?.exitstatus
       end
 
       def execute_and_exit(command)
