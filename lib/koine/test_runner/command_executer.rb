@@ -6,6 +6,11 @@ module Koine
         $?.exitstatus
       end
 
+      def fail(reason)
+        puts reason
+        exit(1)
+      end
+
       def execute_and_exit(command)
         puts command
         exit(execute(command))

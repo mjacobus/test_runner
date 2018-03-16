@@ -18,7 +18,7 @@ module Koine
         end
 
         class Storage
-          def initialize(file_path: '.koine-test_runner/last-test-command.cache')
+          def initialize(file_path: '.cache/koine/last-test-command.cache')
             @file_path = file_path
           end
 

@@ -53,7 +53,7 @@ RSpec.describe Koine::TestRunner::Adapters::LastCommandAdapter do
 
   describe 'storage' do
     before do
-      FileUtils.rm_rf('.koine-test_runner')
+      FileUtils.rm_rf('.cache')
     end
 
     let(:file_storage) { Koine::TestRunner::Adapters::LastCommandAdapter::Storage.new }

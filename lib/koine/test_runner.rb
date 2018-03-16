@@ -23,7 +23,13 @@ module Koine
 
     def run(configuration)
       test_command = @adapters.test_command(configuration)
-      CommandExecuter.new.execute_and_exit(test_command)
+      executer = CommandExecuter.new
+
+      if test_command
+        return executer.execute_and_exit(test_command)
+      end
+
+      executer.fail('No tests run')
     end
   end
 end
