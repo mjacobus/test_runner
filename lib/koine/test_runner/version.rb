@@ -1,3 +1,3 @@
 class TestRunner
-  VERSION = '0.1.0-delete'.freeze
+  VERSION = '0.1.1'.freeze
 end
