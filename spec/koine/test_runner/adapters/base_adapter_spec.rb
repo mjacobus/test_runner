@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe Koine::TestRunner::Adapters::BaseAdapter do
   let(:klass) { described_class }
   let(:next_adapter) { double }
-  let(:config) { create_config('file') }
+  let(:config) { Factory.config('file') }
 
   subject { klass.new }
 

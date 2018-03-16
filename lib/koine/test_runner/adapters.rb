@@ -1,18 +1,22 @@
 module Koine
   class TestRunner
     class Adapters
-      def initialize(adapters = [])
-        @adapters = adapters
+      def initialize(adapters = [], fallback: LastCommandAdapter.new)
+        adapters = adapters.dup
+
+        adapters.unshift(fallback)
+        adapters.push(Adapters::NullAdapter.new)
+
+        adapters.inject do |previous, adapter|
+          previous.next_adapter = adapter
+          adapter
+        end
+
+        @chain = adapters.first
       end
 
       def test_command(config)
-        @adapters.each do |adapter|
-          if adapter.accept?(config)
-            return adapter.test_command(config)
-          end
-        end
-
-        raise ArgumentError, "Unknown runner for '#{config.file_path}'"
+        @chain.test_command(config)
       end
     end
   end

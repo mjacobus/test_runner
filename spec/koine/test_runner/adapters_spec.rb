@@ -2,37 +2,39 @@ require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters do
   let(:config) { Koine::TestRunner::Configuration.new(['file']) }
-  let(:adapter1) { instance_double(Koine::TestRunner::Adapters::Rspec) }
-  let(:adapter2) { instance_double(Koine::TestRunner::Adapters::Rspec) }
-  let(:adapter3) { instance_double(Koine::TestRunner::Adapters::Rspec) }
+  let(:fallback) { MockFallbackAdapter.new }
+  let(:adapter1) { MockAdapter.new(accept: false, command: 'cmd1') }
+  let(:adapter2) { MockAdapter.new(accept: false, command: 'cmd2') }
+  let(:adapter3) { MockAdapter.new(accept: false, command: 'cmd3') }
 
-  subject do
-    described_class.new([adapter1, adapter2, adapter3])
-  end
+  let(:adapters) { described_class.new([adapter1, adapter2, adapter3], fallback: fallback) }
+  let(:null_adapter) { Koine::TestRunner::Adapters::NullAdapter.new }
 
-  before do
-    allow(adapter1).to receive(:accept?).with(config) { false }
-    allow(adapter2).to receive(:accept?).with(config) { true }
-    allow(adapter3).to receive(:accept?).with(config) { false }
+  it 'chains the adapters correctly' do
+    adapters
 
-    allow(adapter1).to receive(:test_command).with(config) { 'command_1' }
-    allow(adapter2).to receive(:test_command).with(config) { 'command_2' }
-    allow(adapter3).to receive(:test_command).with(config) { 'command_3' }
+    expect(fallback.next_adapter).to be(adapter1)
+    expect(adapter1.next_adapter).to be(adapter2)
+    expect(adapter2.next_adapter).to be(adapter3)
+    expect(adapter3.next_adapter).to be_equal_to(null_adapter)
   end
 
   describe '#test_command' do
-    it 'gets command from the first adapter that accepts the config' do
-      command = subject.test_command(config)
-
-      expect(command).to eq('command_2')
+    it 'returns the fallback adapter response' do
+      expect(adapters.test_command(config)).to eq 'fallback'
     end
 
-    it 'raises when there is no adapter for it' do
-      subject = described_class.new([adapter1])
+    it 'returns the last adapter command when it accepts it' do
+      adapter3.accept = true
 
-      expect do
-        subject.test_command(config)
-      end.to raise_error(ArgumentError, "Unknown runner for 'file'")
+      expect(adapters.test_command(config)).to eq('cmd3')
+    end
+
+    it 'returns the last adapter command when it accepts it' do
+      adapter2.accept = true
+      adapter3.accept = true
+
+      expect(adapters.test_command(config)).to eq('cmd2')
     end
   end
 end

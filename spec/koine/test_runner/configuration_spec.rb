@@ -88,6 +88,6 @@ RSpec.describe Koine::TestRunner::Configuration do
   end
 
   def create(*args)
-    create_config(*args)
+    Factory.config(*args)
   end
 end
