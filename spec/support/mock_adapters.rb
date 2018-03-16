@@ -13,6 +13,15 @@ class MockAdapter < Koine::TestRunner::Adapters::BaseAdapter
     accept
   end
 
+  def next_adapter
+    @next_adapter || null_adapter
+  end
+
+
+  def null_adapter
+    Koine::TestRunner::Adapters::NullAdapter.new
+  end
+
   private
 
   def single_file_command(_config)

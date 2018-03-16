@@ -20,7 +20,9 @@ RSpec.describe Koine::TestRunner::Adapters::BaseAdapter do
     it 'raises error' do
       subject.next_adapter = nil
 
-      expect { subject.next_adapter }.to raise_error('next_adapter is not set')
+      expect { subject.next_adapter }.to raise_error(
+        'next_adapter is not set for Koine::TestRunner::Adapters::BaseAdapter'
+      )
     end
   end
 

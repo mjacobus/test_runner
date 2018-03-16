@@ -2,10 +2,14 @@ module Koine
   class TestRunner
     class Adapters
       class BaseAdapter
-        attr_writer :next_adapter
+        # attr_writer :next_adapter
+
+        def next_adapter=(adapter)
+          @next_adapter = adapter
+        end
 
         def next_adapter
-          @next_adapter || raise('next_adapter is not set')
+          @next_adapter || raise("next_adapter is not set for #{self.class}")
         end
 
         def test_command(config)
@@ -24,11 +28,11 @@ module Koine
           single_file_command(config)
         end
 
+        private
+
         def accept?(_config)
           false
         end
-
-        private
 
         def all_tests(config)
           script_for(config)
