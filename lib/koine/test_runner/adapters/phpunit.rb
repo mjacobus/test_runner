@@ -2,8 +2,13 @@ module Koine
   class TestRunner
     class Adapters
       class Phpunit < BaseRegexpAdapter
-        def initialize(file_pattern: /.*Test.php$/)
+        DEFAULT_OPTIONS = [
+          '--color'
+        ].freeze
+
+        def initialize(file_pattern: /.*Test.php$/, options: nil)
           super(file_pattern: file_pattern)
+          @options = Array(options || DEFAULT_OPTIONS)
         end
 
         private
@@ -16,9 +21,15 @@ module Koine
         end
 
         def script_for(_config)
-          return './vendor/bin/phpunit' if File.exist?('vendor/bin/phpunit')
+          if File.exist?('vendor/bin/phpunit')
+            return with_options('./vendor/bin/phpunit')
+          end
 
-          'phpunit'
+          with_options('phpunit')
+        end
+
+        def with_options(script)
+          [script, @options].flatten.join(' ')
         end
       end
     end

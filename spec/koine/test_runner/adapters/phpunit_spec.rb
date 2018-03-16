@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters::Phpunit do
   let(:klass) { described_class }
-  subject { klass.new }
+  subject { klass.new(options: []) }
 
   describe '#accept?' do
     [
@@ -39,6 +39,24 @@ RSpec.describe Koine::TestRunner::Adapters::Phpunit do
         allow(File).to receive(:exist?).with('vendor/bin/phpunit').and_return(true)
 
         expect(subject.send(:script_for, double(:config))).to eq('./vendor/bin/phpunit')
+      end
+    end
+
+    context 'with --color' do
+      subject { klass.new }
+
+      it 'defaults to global installed phpunit' do
+        allow(File).to receive(:exist?).with('vendor/bin/phpunit').and_return(false)
+
+        expect(subject.send(:script_for, double(:config))).to eq('phpunit --color')
+      end
+
+      context 'when ./vendor/bin/phpunit exists' do
+        it 'uses that script' do
+          allow(File).to receive(:exist?).with('vendor/bin/phpunit').and_return(true)
+
+          expect(subject.send(:script_for, double(:config))).to eq('./vendor/bin/phpunit --color')
+        end
       end
     end
   end
