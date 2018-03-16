@@ -1,5 +1,5 @@
 if ENV['SKIP_COVERAGE'] == 'true'
-  puts "Skipping coverage"
+  puts 'Skipping coverage'
 else
   require 'simplecov'
   require 'coveralls'

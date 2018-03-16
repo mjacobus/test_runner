@@ -3,7 +3,7 @@ module Koine
     class CommandExecuter
       def execute(command)
         system(command.to_s)
-        $?.exitstatus
+        $CHILD_STATUS.exitstatus
       end
 
       def execute_and_exit(command)

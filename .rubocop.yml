@@ -21,6 +21,9 @@ Metrics/CyclomaticComplexity:
 Style/GuardClause:
   Enabled: false
 
+Style/IfUnlessModifier:
+  Enabled: false
+
 Style/PredicateName:
   NamePrefix:
     - is_
