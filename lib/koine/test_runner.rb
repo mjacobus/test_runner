@@ -9,6 +9,7 @@ module Koine
     autoload :FileMatcher, 'koine/test_runner/file_matcher'
 
     class Adapters
+      autoload :BaseAdapter, 'koine/test_runner/adapters/base_adapter'
       autoload :BaseRegexpAdapter, 'koine/test_runner/adapters/base_regexp_adapter'
       autoload :Rspec, 'koine/test_runner/adapters/rspec'
       autoload :Phpunit, 'koine/test_runner/adapters/phpunit'

@@ -28,3 +28,7 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+def create_config(*args)
+  Koine::TestRunner::Configuration.new(args)
+end

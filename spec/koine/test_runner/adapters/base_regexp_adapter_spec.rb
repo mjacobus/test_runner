@@ -2,7 +2,17 @@ require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters::BaseRegexpAdapter do
   let(:klass) { described_class }
+  let(:next_adapter) { double }
   subject { klass.new(file_pattern: /.*_spec.rb$/) }
+
+  before do
+    allow(next_adapter).to receive(:test_command).and_return('next-command')
+    subject.next_adapter = next_adapter
+  end
+
+  it 'is a BaseAdapter' do
+    expect(subject).to be_a(Koine::TestRunner::Adapters::BaseAdapter)
+  end
 
   it 'takes string file pattern or Regexp' do
     regexp = klass.new(file_pattern: /.*_spec.rb$/)
