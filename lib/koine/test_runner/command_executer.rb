@@ -1,3 +1,5 @@
+require 'english'
+
 module Koine
   class TestRunner
     class CommandExecuter
