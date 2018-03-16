@@ -1,24 +1,13 @@
-if ENV['SKIP_COVERAGE'] == 'true'
-  puts "Skipping coverage"
-else
-  require 'simplecov'
-  require 'coveralls'
+require 'bundler/setup'
+require 'object_comparator/rspec'
 
-  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
-    [
-      SimpleCov::Formatter::HTMLFormatter,
-      Coveralls::SimpleCov::Formatter
-    ]
-  )
+require 'simplecov'
 
-  SimpleCov.start do
-    add_filter './spec/'
-  end
+SimpleCov.start do
+  add_filter "/spec/"
 end
 
-require 'bundler/setup'
 require 'koine/test_runner'
-require 'object_comparator/rspec'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
