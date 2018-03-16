@@ -2,9 +2,9 @@ require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters do
   let(:config) { Koine::TestRunner::Configuration.new(['file']) }
-  let(:adapter1) { double(Koine::TestRunner::Adapters::Rspec) }
-  let(:adapter2) { double(Koine::TestRunner::Adapters::Rspec) }
-  let(:adapter3) { double(Koine::TestRunner::Adapters::Rspec) }
+  let(:adapter1) { instance_double(Koine::TestRunner::Adapters::Rspec) }
+  let(:adapter2) { instance_double(Koine::TestRunner::Adapters::Rspec) }
+  let(:adapter3) { instance_double(Koine::TestRunner::Adapters::Rspec) }
 
   subject do
     described_class.new([adapter1, adapter2, adapter3])
