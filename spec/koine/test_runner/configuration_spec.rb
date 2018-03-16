@@ -25,6 +25,12 @@ RSpec.describe Koine::TestRunner::Configuration do
 
       expect(subject.file_path).to eq(file)
     end
+
+    it 'allows --last only argument' do
+      config = create('--last')
+
+      expect(config.last?).to be true
+    end
   end
 
   describe '#line' do

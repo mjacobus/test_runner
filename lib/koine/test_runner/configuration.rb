@@ -4,8 +4,8 @@ module Koine
       attr_reader :file_path
 
       def initialize(attributes = [])
-        initialize_attributes(attributes.dup)
         initialize_options(attributes.dup)
+        initialize_attributes(attributes.dup)
       end
 
       def line
@@ -18,6 +18,10 @@ module Koine
 
       def all?
         @options[:all]
+      end
+
+      def last?
+        @options[:last]
       end
 
       def config_file
@@ -34,7 +38,14 @@ module Koine
 
       def initialize_attributes(arguments)
         @file_path = arguments.reject { |arg| arg =~ /^--/ }.shift
-        raise ArgumentError, 'file name was not given' unless @file_path
+
+        if require_file_name? && @file_path.nil?
+          raise ArgumentError, 'file name was not given'
+        end
+      end
+
+      def require_file_name?
+        !last?
       end
 
       def initialize_options(data)
