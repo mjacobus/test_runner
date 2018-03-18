@@ -7,7 +7,7 @@ require 'koine/test_runner/adapters/base_adapter'
 require 'koine/test_runner/adapters/base_regexp_adapter'
 require 'koine/test_runner/adapters/custom'
 require 'koine/test_runner/adapters/null'
-require 'koine/test_runner/adapters/last_command_adapter'
+require 'koine/test_runner/adapters/last_command'
 
 module Koine
   class TestRunner

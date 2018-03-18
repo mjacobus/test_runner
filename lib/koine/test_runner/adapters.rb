@@ -1,7 +1,7 @@
 module Koine
   class TestRunner
     class Adapters
-      def initialize(adapters = [], fallback: LastCommandAdapter.new)
+      def initialize(adapters = [], fallback: LastCommand.new)
         adapters = adapters.dup
 
         adapters.unshift(fallback)

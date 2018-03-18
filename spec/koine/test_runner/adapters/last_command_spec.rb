@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Koine::TestRunner::Adapters::LastCommandAdapter do
+RSpec.describe Koine::TestRunner::Adapters::LastCommand do
   let(:config) { Factory.config(['file']) }
   let(:next_adapter) { MockAdapter.new(accept: false, command: 'cmd1') }
   let(:storage) { double(:storage) }
@@ -56,7 +56,7 @@ RSpec.describe Koine::TestRunner::Adapters::LastCommandAdapter do
       FileUtils.rm_rf('.cache')
     end
 
-    let(:file_storage) { Koine::TestRunner::Adapters::LastCommandAdapter::Storage.new }
+    let(:file_storage) { Koine::TestRunner::Adapters::LastCommand::Storage.new }
 
     describe '#retrieve' do
       it 'returns nil when file does not exist' do
