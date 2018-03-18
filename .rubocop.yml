@@ -18,13 +18,16 @@ Metrics/MethodLength:
 Metrics/CyclomaticComplexity:
   Max: 7
 
+Style/SpecialGlobalVars:
+  Enabled: false
+
 Style/GuardClause:
   Enabled: false
 
 Style/IfUnlessModifier:
   Enabled: false
 
-Style/PredicateName:
+Naming/PredicateName:
   NamePrefix:
     - is_
     - has_
@@ -46,5 +49,5 @@ AllCops:
   Exclude:
     - Gemfile
 
-Style/ExtraSpacing:
+Layout/ExtraSpacing:
   AllowForAlignment: true
