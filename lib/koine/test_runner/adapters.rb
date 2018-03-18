@@ -5,7 +5,7 @@ module Koine
         adapters = adapters.dup
 
         adapters.unshift(fallback)
-        adapters.push(Adapters::NullAdapter.new)
+        adapters.push(Adapters::Null.new)
 
         adapters.inject do |previous, adapter|
           previous.next_adapter = adapter

@@ -18,7 +18,7 @@ class MockAdapter < Koine::TestRunner::Adapters::BaseAdapter
   end
 
   def null_adapter
-    Koine::TestRunner::Adapters::NullAdapter.new
+    Koine::TestRunner::Adapters::Null.new
   end
 
   def self.succeed(adapter)

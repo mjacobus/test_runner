@@ -44,15 +44,15 @@ bundle exec run_test some/file_spec.custom
 
 adapters:
   rspec:
-    adapter: Koine::TestRunner::Adapters::Ruby::RSpec
+    adapter: rspec
     file_pattern: "*_spec.rb"
 
   phpunit:
-    adapter: Koine::TestRunner::Adapters::Php::PHPUnit
+    adapter: phpunit
     file_pattern: "*Test.php"
 
   jest:
-    adapter: Koine::TestRunner::Adapters::CustomAdapter
+    adapter: custom
     file_pattern: "client/.*.spec.js"
     command: "./node_modules/.bin/jest"
     commands:
