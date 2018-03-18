@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Koine::TestRunner::Adapters::CustomAdapter do
+RSpec.describe Koine::TestRunner::Adapters::Custom do
   let(:file) { 'foo/bar/baz/file_spec.rb' }
 
   let(:adapter) do
