@@ -18,7 +18,7 @@ RSpec.describe Koine::TestRunner::Adapters::Custom do
   subject { MockAdapter.succeed(adapter) }
 
   it 'is a file pattern based adapter' do
-    expect(subject).to be_a(Koine::TestRunner::Adapters::BaseRegexpAdapter)
+    expect(subject).to be_a(Koine::TestRunner::Adapters::BaseRegexp)
   end
 
   it 'inores files that is none of it\'s concern' do

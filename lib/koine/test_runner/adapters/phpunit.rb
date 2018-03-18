@@ -1,7 +1,7 @@
 module Koine
   class TestRunner
     class Adapters
-      class Phpunit < BaseRegexpAdapter
+      class Phpunit < BaseRegexp
         DEFAULT_OPTIONS = [
           '--color'
         ].freeze

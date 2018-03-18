@@ -1,7 +1,7 @@
 module Koine
   class TestRunner
     class Adapters
-      class Rspec < BaseRegexpAdapter
+      class Rspec < BaseRegexp
         def initialize(file_pattern: /.*_spec.rb$/)
           super(file_pattern: file_pattern)
         end

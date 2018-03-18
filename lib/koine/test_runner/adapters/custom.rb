@@ -1,7 +1,7 @@
 module Koine
   class TestRunner
     class Adapters
-      class Custom < BaseRegexpAdapter
+      class Custom < BaseRegexp
         def initialize(file_pattern:, command: nil, commands: {})
           super(file_pattern: file_pattern)
           @command = command
