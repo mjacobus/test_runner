@@ -57,7 +57,7 @@ RSpec.describe Koine::TestRunner::Configuration do
     end
 
     it 'defaults to config/default.yml' do
-      config = File.expand_path('../../../../config/default.yml', __FILE__)
+      config = File.expand_path('../../../config/default.yml', __dir__)
 
       expect(subject.config_file).to eq(config)
     end

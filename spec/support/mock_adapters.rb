@@ -17,7 +17,6 @@ class MockAdapter < Koine::TestRunner::Adapters::BaseAdapter
     @next_adapter || null_adapter
   end
 
-
   def null_adapter
     Koine::TestRunner::Adapters::NullAdapter.new
   end
