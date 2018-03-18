@@ -14,15 +14,15 @@ RSpec.describe Koine::TestRunner::FileMatcher do
     [40, 'aTestMarkedWithTestAnnotation'],
     [41, 'aTestMarkedWithTestAnnotation']
   ].each do |element|
-    line          = element.first
-    expectedMatch = element.last
+    line = element.first
+    expected_match = element.last
 
-    specify "#above_line with #{line}, returns #{expectedMatch}" do
+    specify "#above_line with #{line}, returns #{expected_match}" do
       regexp = /public function ([^\(]+)/
 
       match = subject.above_line(line, regexp: regexp)
 
-      expect(match[1]).to eq(expectedMatch)
+      expect(match[1]).to eq(expected_match)
     end
   end
 
