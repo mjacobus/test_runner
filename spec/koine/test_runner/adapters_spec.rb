@@ -8,7 +8,7 @@ RSpec.describe Koine::TestRunner::Adapters do
   let(:adapter3) { MockAdapter.new(accept: false, command: 'cmd3') }
 
   let(:adapters) { described_class.new([adapter1, adapter2, adapter3], fallback: fallback) }
-  let(:null_adapter) { Koine::TestRunner::Adapters::NullAdapter.new }
+  let(:null_adapter) { Koine::TestRunner::Adapters::Null.new }
 
   it 'chains the adapters correctly' do
     adapters

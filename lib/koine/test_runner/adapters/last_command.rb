@@ -1,7 +1,7 @@
 module Koine
   class TestRunner
     class Adapters
-      class LastCommandAdapter < BaseAdapter
+      class LastCommand < BaseAdapter
         def initialize(storage: Storage.new)
           @storage = storage
         end

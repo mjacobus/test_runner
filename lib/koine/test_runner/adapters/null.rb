@@ -1,7 +1,7 @@
 module Koine
   class TestRunner
     class Adapters
-      class NullAdapter
+      class Null
         def test_command(_config)
           nil
         end

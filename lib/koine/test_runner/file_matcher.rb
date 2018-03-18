@@ -11,8 +11,8 @@ module Koine
         length = @lines.length
         slice = length - line
         lines = @lines.reverse.slice(slice, length)
-        lines.each do |line|
-          match = regexp.match(line)
+        lines.each do |file_line|
+          match = regexp.match(file_line)
           return match if match
         end
 

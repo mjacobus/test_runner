@@ -4,15 +4,16 @@ require 'koine/test_runner/configuration'
 require 'koine/test_runner/builder'
 require 'koine/test_runner/adapters'
 require 'koine/test_runner/adapters/base_adapter'
-require 'koine/test_runner/adapters/null_adapter'
-require 'koine/test_runner/adapters/last_command_adapter'
+require 'koine/test_runner/adapters/base_regexp'
+require 'koine/test_runner/adapters/custom'
+require 'koine/test_runner/adapters/null'
+require 'koine/test_runner/adapters/last_command'
 
 module Koine
   class TestRunner
     autoload :FileMatcher, 'koine/test_runner/file_matcher'
 
     class Adapters
-      autoload :BaseRegexpAdapter, 'koine/test_runner/adapters/base_regexp_adapter'
       autoload :Rspec, 'koine/test_runner/adapters/rspec'
       autoload :Phpunit, 'koine/test_runner/adapters/phpunit'
     end

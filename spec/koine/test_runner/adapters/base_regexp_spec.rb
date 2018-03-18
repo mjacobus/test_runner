@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Koine::TestRunner::Adapters::BaseRegexpAdapter do
+RSpec.describe Koine::TestRunner::Adapters::BaseRegexp do
   let(:klass) { described_class }
   let(:next_adapter) { double }
   subject { klass.new(file_pattern: /.*_spec.rb$/) }

@@ -43,27 +43,28 @@ bundle exec run_test some/file_spec.custom
 # .test_runner.yml
 
 adapters:
-  minitest:
-    adapter: Koine\TestRunner\Adapter\Ruby\Minitest
-    file_pattern: "*_test.rb"
-
   rspec:
-    adapter: Koine\TestRunner\Adapter\Ruby\RSpec
+    adapter: rspec
     file_pattern: "*_spec.rb"
 
   phpunit:
-    adapter: Koine\TestRunner\Adapter\Php\PHPUnit
+    adapter: phpunit
     file_pattern: "*Test.php"
 
-  codeception:
-    adapter: Koine\TestRunner\Adapter\Php\Codeception
-    file_pattern: "*Spec.php"
-
   jest:
-    adapter: Koine\TestRunner\Adapter\Javascript\Jest
-    file_pattern: "*_(test|spec).(js|jsx)"
+    adapter: custom
+    file_pattern: "client/.*.spec.js"
+    command: "./node_modules/.bin/jest"
+    commands:
+      all: "{command}"
+      file: "{command} {file}"
+      # oops, jest does not really filter by line
+      line: "{command} {file}"
 
+  # TODO
   My::CustoAdapter:
+    require:
+      - some/file
     adapter: MyCustomAdapter
     suffix: '_spec.custom'
 ```

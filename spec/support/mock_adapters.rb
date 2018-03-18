@@ -18,7 +18,13 @@ class MockAdapter < Koine::TestRunner::Adapters::BaseAdapter
   end
 
   def null_adapter
-    Koine::TestRunner::Adapters::NullAdapter.new
+    Koine::TestRunner::Adapters::Null.new
+  end
+
+  def self.succeed(adapter)
+    mock = new(accept: true, command: nil)
+    adapter.next_adapter = mock
+    adapter
   end
 
   private
