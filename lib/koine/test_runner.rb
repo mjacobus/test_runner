@@ -1,3 +1,5 @@
+require 'fileutils'
+
 require 'koine/test_runner/version'
 require 'koine/test_runner/command_executer'
 require 'koine/test_runner/configuration'
