@@ -34,7 +34,7 @@ module Koine
         end
 
         klass = Object.const_get(adapter_class)
-        klass.new(symbolize_keys(config))
+        klass.new(**symbolize_keys(config))
       end
 
       def classify(klass)
