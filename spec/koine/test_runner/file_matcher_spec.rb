@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::FileMatcher do
-  let(:file) { 'spec/fixtures/FixturePhpUnitTest.php' }
   subject { described_class.new(file_path: file) }
+
+  let(:file) { 'spec/fixtures/FixturePhpUnitTest.php' }
 
   [
     [9, 'testShouldAddTwoNumbers'],
@@ -18,7 +21,7 @@ RSpec.describe Koine::TestRunner::FileMatcher do
     expected_match = element.last
 
     specify "#above_line with #{line}, returns #{expected_match}" do
-      regexp = /public function ([^\(]+)/
+      regexp = /public function ([^(]+)/
 
       match = subject.above_line(line, regexp: regexp)
 

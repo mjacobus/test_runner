@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters::LastCommand do
+  subject { described_class.new(storage: storage) }
+
   let(:config) { Factory.config(['file']) }
   let(:next_adapter) { MockAdapter.new(accept: false, command: 'cmd1') }
   let(:storage) { double(:storage) }
   let(:command) { subject.test_command(config) }
   let(:last_command) { nil }
-
-  subject { described_class.new(storage: storage) }
 
   before do
     allow(storage).to receive(:retrieve).and_return(last_command)

@@ -1,6 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters::Custom do
+  subject { MockAdapter.succeed(adapter) }
+
   let(:file) { 'foo/bar/baz/file_spec.rb' }
 
   let(:adapter) do
@@ -14,8 +18,6 @@ RSpec.describe Koine::TestRunner::Adapters::Custom do
       }
     )
   end
-
-  subject { MockAdapter.succeed(adapter) }
 
   it 'is a file pattern based adapter' do
     expect(subject).to be_a(Koine::TestRunner::Adapters::BaseRegexp)

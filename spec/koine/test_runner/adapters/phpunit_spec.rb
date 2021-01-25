@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters::Phpunit do
-  let(:klass) { described_class }
   subject { klass.new(options: []) }
+
+  let(:klass) { described_class }
 
   describe '#accept?' do
     [
@@ -80,6 +83,7 @@ RSpec.describe Koine::TestRunner::Adapters::Phpunit do
       expect(subject.test_command(configuration)).to eq("phpunit #{file}")
     end
 
+    # rubocop:disable RSpec/ExampleLength
     it 'returns correct line when method method starts with function' do
       expect(subject.test_command(config_for_line(9)))
         .to eq("phpunit #{file} --filter '/\\btestShouldAddTwoNumbers\\b/'")
@@ -105,6 +109,7 @@ RSpec.describe Koine::TestRunner::Adapters::Phpunit do
       expect(subject.test_command(config_for_line(40)))
         .to eq("phpunit #{file} --filter '/\\baTestMarkedWithTestAnnotation\\b/'")
     end
+    # rubocop:enable RSpec/ExampleLength
   end
 
   def config_for_line(line)

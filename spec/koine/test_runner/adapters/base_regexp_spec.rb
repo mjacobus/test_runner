@@ -1,9 +1,12 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters::BaseRegexp do
+  subject { klass.new(file_pattern: /.*_spec.rb$/) }
+
   let(:klass) { described_class }
   let(:next_adapter) { double }
-  subject { klass.new(file_pattern: /.*_spec.rb$/) }
 
   before do
     allow(next_adapter).to receive(:test_command).and_return('next-command')

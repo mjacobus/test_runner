@@ -1,24 +1,16 @@
-Lint/AmbiguousBlockAssociation:
-  Enabled: false
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
 
 Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+Style/AccessorGrouping:
   Enabled: false
 
-Metrics/LineLength:
-  Max: 100
-
-Metrics/ClassLength:
-  CountComments: false
-  Max: 250
-
-Metrics/MethodLength:
-  CountComments: false
-  Max: 30
-
-Metrics/CyclomaticComplexity:
-  Max: 7
-
-Style/SpecialGlobalVars:
+Style/Documentation:
   Enabled: false
 
 Style/GuardClause:
@@ -27,27 +19,70 @@ Style/GuardClause:
 Style/IfUnlessModifier:
   Enabled: false
 
-Naming/PredicateName:
-  NamePrefix:
-    - is_
-    - has_
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
 
-  NamePrefixBlacklist:
-    - is_
-    - has_
+Layout/MultilineOperationIndentation:
+  Enabled: true
+  EnforcedStyle: indented
 
-Metrics/AbcSize:
-  Max: 45
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
 
-Metrics/PerceivedComplexity:
+Naming/RescuedExceptionsVariableName:
+  PreferredName: 'exception'
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+RSpec:
+  Exclude:
+    - 'spec/factories/**/*'
+
+RSpec/ExampleLength:
   Max: 10
 
-Documentation:
+RSpec/MultipleExpectations:
+  Enabled: false
+
+# while that is a good rule, AR objects can't be properly instance_double'd
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+# ----------------- ATTENTION -------------------------------------------------
+# Temporary, til time to fix new violations introduced by new rubocop version
+# -----------------------------------------------------------------------------
+Lint/UnmodifiedReduceAccumulator:
+  Enabled: false
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+RSpec/AnyInstance:
+  Enabled: false
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+RSpec/NestedGroups:
+  Enabled: false
+RSpec/RepeatedExample:
+  Enabled: false
+Lint/MissingSuper:
+  Enabled: false
+RSpec/NamedSubject:
+  Enabled: false
+RSpec/RepeatedDescription:
   Enabled: false
 
 AllCops:
+  NewCops: enable
   Exclude:
-    - Gemfile
-
-Layout/ExtraSpacing:
-  AllowForAlignment: true
+    - 'node_modules/**/*'
+    - 'script/**/*'
+    - 'log/**/*'
+    - 'docker/**/*'
+    - 'doc/**/*'
+    - 'bin/**/*'
+    - 'Rakefile'
+    - 'config.ru'
+    - 'config/**/*'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'

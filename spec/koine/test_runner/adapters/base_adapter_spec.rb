@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters::BaseAdapter do
+  subject { klass.new }
+
   let(:klass) { described_class }
   let(:next_adapter) { double }
   let(:config) { Factory.config('file') }
-
-  subject { klass.new }
 
   before do
     allow(next_adapter).to receive(:test_command).with(config).and_return('next-command')

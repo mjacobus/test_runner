@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'koine/test_runner/version'
 require 'koine/test_runner/command_executer'
 require 'koine/test_runner/configuration'

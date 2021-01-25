@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Koine
   class TestRunner
     class Adapters
@@ -32,8 +34,8 @@ module Koine
 
         def command(template, config)
           template.sub('{command}', @command)
-                  .sub('{file}', config.file_path.to_s)
-                  .sub('{line}', config.line.to_s)
+            .sub('{file}', config.file_path.to_s)
+            .sub('{line}', config.line.to_s)
         end
       end
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MockAdapter < Koine::TestRunner::Adapters::BaseAdapter
   attr_accessor :accept, :command
   attr_reader :configs

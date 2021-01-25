@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV['SKIP_COVERAGE'] == 'true'
   puts 'Skipping coverage'
 else

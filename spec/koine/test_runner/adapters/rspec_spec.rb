@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Adapters::Rspec do
-  let(:klass) { described_class }
   subject { klass.new }
+
+  let(:klass) { described_class }
 
   describe '#accept?' do
     [

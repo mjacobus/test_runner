@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Koine
   class TestRunner
     class Adapters
@@ -14,7 +16,7 @@ module Koine
         private
 
         def file_line_command(config)
-          regexp = /public function ([^\(]+)/
+          regexp = /public function ([^(]+)/
           matcher = FileMatcher.new(file_path: config.file_path)
           match = matcher.above_line(config.line, regexp: regexp)[1]
           [single_file_command(config), '--filter', "'/\\b#{match}\\b/'"].join(' ')

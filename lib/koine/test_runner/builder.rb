@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'yaml'
 
 module Koine
@@ -38,7 +40,7 @@ module Koine
       end
 
       def classify(klass)
-        klass.to_s.split('_').map(&:capitalize).join('')
+        klass.to_s.split('_').map(&:capitalize).join
       end
 
       def symbolize_keys(hash)

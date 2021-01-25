@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Koine
   class TestRunner
     class Configuration
@@ -27,6 +29,7 @@ module Koine
       def config_file
         return @options[:config_file] if @options[:config_file]
         return '.test_runner.yml' if File.exist?('.test_runner.yml')
+
         File.expand_path('../../../config/default.yml', __dir__)
       end
 

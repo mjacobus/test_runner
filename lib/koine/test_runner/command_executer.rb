@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Koine
   class TestRunner
     class CommandExecuter
       def execute(command)
         system(command.to_s)
-        $?.exitstatus
+        $CHILD_STATUS.exitstatus
       end
 
       def fail(reason)

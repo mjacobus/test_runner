@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Builder do
@@ -42,6 +44,7 @@ RSpec.describe Koine::TestRunner::Builder do
 
     describe 'with snake_case_adapters' do
       let(:adapter_name) { 'custom_adapter' }
+
       before { mock_config }
 
       it 'creates a config based on snake_case_adapter_names' do
@@ -53,6 +56,7 @@ RSpec.describe Koine::TestRunner::Builder do
 
     describe 'custom addapter' do
       let(:adapter_name) { 'custom' }
+
       before { mock_config }
 
       it 'creates a config based on snake_case_adapter_names' do

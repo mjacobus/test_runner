@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 RSpec.describe Koine::TestRunner::Configuration do
+  subject { create(file) }
+
   let(:file) do
     'spec/koine/test_runner/arguments_spec.rb'
   end
-
-  subject { create(file) }
 
   describe '#initialize' do
     it 'throws when no file_path was given' do
@@ -53,7 +55,7 @@ RSpec.describe Koine::TestRunner::Configuration do
 
   describe '#config_file' do
     before do
-      allow(File).to receive(:exist?).with('.test_runner.yml') { false }
+      allow(File).to receive(:exist?).with('.test_runner.yml').and_return(false)
     end
 
     it 'defaults to config/default.yml' do
@@ -63,7 +65,7 @@ RSpec.describe Koine::TestRunner::Configuration do
     end
 
     it 'returns .test_runner.yml when this file exists' do
-      allow(File).to receive(:exist?).with('.test_runner.yml') { true }
+      allow(File).to receive(:exist?).with('.test_runner.yml').and_return(true)
 
       expect(subject.config_file).to eq('.test_runner.yml')
     end
