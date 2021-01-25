@@ -14,5 +14,5 @@ before_install: gem install bundler -v 1.14.6
 
 script:
   - bundle exec rspec
-  # - ./tests/integration_tests.sh
+  - ./tests/integration_tests.sh
   # - bundle exec rubocop
