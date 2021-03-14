@@ -7,6 +7,7 @@ module Koine
         finish = Time.now
         elapsed = finish - start
         logger.info("#{command} => elapsed time: #{elapsed.round(2)}")
+        puts "\nTook #{elapsed.round(2)} seconds"
         $?.exitstatus
       end
 
