@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'logger'
 
 require 'koine/test_runner/version'
 require 'koine/test_runner/command_executer'
