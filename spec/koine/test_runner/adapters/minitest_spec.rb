@@ -35,10 +35,10 @@ RSpec.describe Koine::TestRunner::Adapters::Minitest do
     end
 
     context 'when ./bin/rails exists' do
-      it 'returns ./bin/rails' do
+      it 'returns ./bin/rails test' do
         allow(File).to receive(:exist?).with('bin/rails').and_return(true)
 
-        expect(adapter.send(:script_for, double(:config))).to eq('./bin/rails')
+        expect(adapter.send(:script_for, double(:config))).to eq('./bin/rails test')
       end
     end
   end

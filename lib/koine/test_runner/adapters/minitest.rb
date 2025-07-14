@@ -11,7 +11,7 @@ module Koine
         private
 
         def script_for(_config)
-          return './bin/rails' if File.exist?('bin/rails')
+          return './bin/rails test' if File.exist?('bin/rails')
 
           'ruby'
         end
