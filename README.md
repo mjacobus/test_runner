@@ -43,6 +43,10 @@ bundle exec run_test some/file_spec.custom
 # .test_runner.yml
 
 adapters:
+  minitest:
+    adapter: minitest
+    file_pattern: "*_spec.rb"
+
   rspec:
     adapter: rspec
     file_pattern: "*_spec.rb"

@@ -17,6 +17,7 @@ module Koine
     autoload :FileMatcher, 'koine/test_runner/file_matcher'
 
     class Adapters
+      autoload :Minitest, 'koine/test_runner/adapters/minitest'
       autoload :Rspec, 'koine/test_runner/adapters/rspec'
       autoload :Phpunit, 'koine/test_runner/adapters/phpunit'
     end
