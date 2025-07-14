@@ -1,3 +1,4 @@
+require_relative './base_adapter'
 module Koine
   class TestRunner
     class Adapters
